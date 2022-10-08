@@ -1,6 +1,6 @@
 package com.prueba;
 
-import com.prueba.entity.Book;
+import com.prueba.domain.Book;
 
 import java.util.ArrayList;
 import java.util.Comparator;

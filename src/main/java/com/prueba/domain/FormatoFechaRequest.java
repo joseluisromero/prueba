@@ -1,4 +1,4 @@
-package com.prueba.entity;
+package com.prueba.domain;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;

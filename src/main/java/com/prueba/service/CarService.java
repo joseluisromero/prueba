@@ -1,6 +1,6 @@
 package com.prueba.service;
 
-import com.prueba.entity.Car;
+import com.prueba.domain.Car;
 
 import java.util.Set;
 import java.util.UUID;

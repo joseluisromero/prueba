@@ -1,4 +1,4 @@
-package com.prueba.dto;
+package com.prueba.service.dto;
 
 import lombok.*;
 
@@ -6,7 +6,6 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
 
-@Builder
 @Setter
 @Getter
 public class AdditionalClientInfo implements Serializable {

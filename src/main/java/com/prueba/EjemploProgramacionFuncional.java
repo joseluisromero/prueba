@@ -1,6 +1,6 @@
 package com.prueba;
 
-import com.prueba.entity.Car;
+import com.prueba.domain.Car;
 
 import java.util.*;
 import java.util.stream.Collectors;

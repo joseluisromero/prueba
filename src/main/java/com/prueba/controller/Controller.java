@@ -1,12 +1,11 @@
-package com.prueba;
+package com.prueba.controller;
 
-import com.prueba.dto.AdditionalClientInfo;
-import com.prueba.dto.AdditionalRequestDto;
-import com.prueba.entity.Car;
-import com.prueba.entity.FormatoFechaRequest;
+import com.prueba.domain.Car;
+import com.prueba.domain.FormatoFechaRequest;
 import com.prueba.service.CarService;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.prueba.service.dto.AdditionalClientInfo;
+import com.prueba.service.dto.AdditionalRequestDto;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,9 +18,9 @@ import java.util.Set;
 
 @RestController
 @CrossOrigin
+@RequiredArgsConstructor
 public class Controller {
-    @Autowired
-    CarService carService;
+    private final  CarService carService;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public Set<Car> obtener() {

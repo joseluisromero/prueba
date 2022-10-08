@@ -1,4 +1,4 @@
-package com.prueba;
+package com.prueba.util;
 
 import org.springframework.stereotype.Component;
 

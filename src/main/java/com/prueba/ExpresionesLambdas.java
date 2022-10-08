@@ -1,7 +1,7 @@
 package com.prueba;
 
 
-import com.prueba.entity.Car;
+import com.prueba.domain.Car;
 
 import java.util.ArrayList;
 import java.util.List;

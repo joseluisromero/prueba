@@ -1,6 +1,6 @@
 package com.prueba.service.impl;
 
-import com.prueba.entity.Car;
+import com.prueba.domain.Car;
 import com.prueba.service.CarService;
 import org.springframework.stereotype.Service;
 

@@ -1,10 +1,8 @@
 package com.prueba;
 
-import com.prueba.entity.Car;
+import com.prueba.domain.Car;
 
 import java.util.*;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class EjemploStreamForEachMap {
     public static void main(String[] args) {

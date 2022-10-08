@@ -1,4 +1,4 @@
-package com.prueba.dto;
+package com.prueba.service.dto;
 
 import lombok.*;
 
