@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import reactor.core.publisher.Mono;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -33,10 +34,41 @@ public class EmployeeController {
         return new ResponseEntity<>(employeeService.create(employeeRequest), HttpStatus.CREATED);
     }
 
+    /**
+     * decide 1:Busqueda directa
+     * decide 2:PathVariable
+     * decide 3:Param
+     *
+     * @param identification
+     * @return
+     */
+    @GetMapping(value = "/findBy/{decide}/{identification}")
+    public ResponseEntity<EmployeeResponse> findByIdentification(@PathVariable(name = "decide") int decide, @PathVariable(name = "identification") String identification) {
+        if (decide == 1)
+            return new ResponseEntity<>(employeeService.findByIdentification(identification), HttpStatus.OK);
+        else if (decide == 2)
+            return new ResponseEntity<>(employeeService.findByPathVariable(identification), HttpStatus.OK);
+        else if (decide == 3)
+            return new ResponseEntity<>(employeeService.findByParam(identification), HttpStatus.OK);
+        else
+            return new ResponseEntity<>(EmployeeResponse.builder().build(), HttpStatus.NOT_FOUND);
+    }
+
+    @GetMapping(value = "/findByParam")
+    public ResponseEntity<EmployeeResponse> findByParam(@RequestParam(name = "identification") String identification) {
+
+        return new ResponseEntity<>(employeeService.findByIdentification(identification), HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/findByPathVariable/{identification}")
+    public ResponseEntity<EmployeeResponse> findByPathVariable(@PathVariable(name = "identification") String identification) {
+        return new ResponseEntity<>(employeeService.findByIdentification(identification), HttpStatus.OK);
+    }
+
     @GetMapping(value = "/json")
     public ResponseEntity<String> json() throws ParseException {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-        EmployeeRequest employeeRequest=EmployeeRequest.builder().id(1)
+        EmployeeRequest employeeRequest = EmployeeRequest.builder().id(1)
                 .identification("1311901001")
                 .firstName("Jose")
                 .lastName("Romero")
@@ -56,6 +88,12 @@ public class EmployeeController {
 
         return new ResponseEntity<List<Person>>(lambdasService.getTravelsForPersonMap(name), HttpStatus.OK);
     }*/
+
+    @PostMapping(value = "/createWebFlux")
+    public Mono<EmployeeResponse> createWebFlux(@RequestBody EmployeeRequest employeeRequest) {
+
+        return employeeService.createWebFlux(employeeRequest);
+    }
 
 
 }
