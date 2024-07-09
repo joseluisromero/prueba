@@ -5,7 +5,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.logging.log4j.util.Strings;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.ApplicationContext;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.stereotype.Component;
@@ -17,7 +16,6 @@ import java.util.concurrent.atomic.AtomicInteger;
 @SpringBootApplication
 @Component
 @EnableScheduling
-//@EnableFeignClients
 public class PruebaApplication {
     private static ObjectMapper objectMapper;
 

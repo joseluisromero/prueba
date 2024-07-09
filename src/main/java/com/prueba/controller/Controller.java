@@ -55,7 +55,7 @@ public class Controller {
             additionalRequest.setCreationSent(additionalRequestDto.isCreationSent());
             additionalRequest.setNotificationSent(additionalRequestDto.isNotificationSent());
             AdditionalClientInfo clientInfo = new AdditionalClientInfo();
-            clientInfo.setId(new Long(18));
+            //clientInfo.setId(new Long(18));
             clientInfo.setIdentification("1723263941");
             clientInfo.setUnmaskedIdentification("1723263941");
             clientInfo.setCif("5676052");

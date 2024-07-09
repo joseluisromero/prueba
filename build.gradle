@@ -7,7 +7,7 @@ plugins {
 
 group = 'com.prueba'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '11'
+sourceCompatibility = '17'
 
 repositories {
 	mavenCentral()
@@ -27,7 +27,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-webflux:2.7.4'
 
 	//Para ver  comuni9cacion con feign
-	implementation group: 'org.springframework.cloud' , name: 'spring-cloud-starter-openfeign' , version: '4.0.0'
+	//implementation group: 'org.springframework.cloud' , name: 'spring-cloud-starter-openfeign' , version: '4.0.0'
 	//implementation 'io.github.openfeign:feign-okhttp:11.10'
 	//para el envio de MSM
 	implementation 'com.twilio.sdk:twilio:9.0.0'
