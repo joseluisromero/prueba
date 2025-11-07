@@ -3,6 +3,7 @@ package com.prueba.handler;
 import com.prueba.service.dto.ErrorInfo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotWritableException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -40,5 +41,11 @@ public class HandlerController {
         log.error(httpMessageNotWritableException.getMessage());
 
         return warnAndRespond(HttpStatus.NOT_FOUND.toString(), httpMessageNotWritableException.getMessage());
+    }
+
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<Object> genericException(Exception exception) {
+        log.error("GenericException: {} ", exception.getMessage(), exception);
+        return new ResponseEntity<>(ErrorInfo.builder().message(exception.getMessage()).build(), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }

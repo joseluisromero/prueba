@@ -6,24 +6,29 @@ import com.prueba.service.CarService;
 import com.prueba.service.dto.AdditionalClientInfo;
 import com.prueba.service.dto.AdditionalRequestDto;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.server.DelegatingServerHttpResponse;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Set;
 
 @RestController
 @CrossOrigin
 @RequiredArgsConstructor
+@Slf4j
 public class Controller {
-    private final  CarService carService;
+    private final CarService carService;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public Set<Car> obtener() {
+        log.error("Error");
         Set<Car> listaCar = carService.getlistCar();
         System.out.println("lista: " + listaCar.size());
         return listaCar;
@@ -50,7 +55,7 @@ public class Controller {
             additionalRequest.setCreationSent(additionalRequestDto.isCreationSent());
             additionalRequest.setNotificationSent(additionalRequestDto.isNotificationSent());
             AdditionalClientInfo clientInfo = new AdditionalClientInfo();
-            clientInfo.setId(new Long(18));
+            //clientInfo.setId(new Long(18));
             clientInfo.setIdentification("1723263941");
             clientInfo.setUnmaskedIdentification("1723263941");
             clientInfo.setCif("5676052");
@@ -105,4 +110,45 @@ public class Controller {
                 edad.getDays()));
         return edad.getYears();
     }
+
+    @GetMapping("/switch")
+    public boolean switchEjemplo(@RequestParam String status, @RequestParam String channel) {
+        return isSend(status, channel);
+    }
+
+    @GetMapping("/day")
+    public boolean day() {
+        Calendar c = Calendar.getInstance();
+        c.setTime(new Date());
+        int dia = c.get(Calendar.DAY_OF_WEEK);
+        if (dia == Calendar.SUNDAY) {
+            //Domingo
+        }
+        if (dia == Calendar.MONDAY) {
+            //Lunes
+        }
+        if (dia == Calendar.TUESDAY) {
+            //Martes
+        }
+        return true;
+    }
+
+
+
+    private boolean isSend(String status, String channel) {
+        boolean seguir = false;
+        switch (channel) {
+            case "CRM":
+                return false;
+            case "CALLCENTER":
+                if (status.equalsIgnoreCase("gxc")) {
+                    seguir = true;
+                } else {
+                    seguir = false;
+                }
+                return seguir;
+        }
+        return true;
+    }
+
 }

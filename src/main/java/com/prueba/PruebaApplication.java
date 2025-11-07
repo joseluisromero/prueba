@@ -24,7 +24,7 @@ public class PruebaApplication {
         objectMapper = new ObjectMapper();
     }
 
-    public static void main(String[] args) throws JsonProcessingException {
+    public static void main(String[] args)  {
         //SpringApplication.run(PruebaApplication.class, args);
         ApplicationContext context = SpringApplication.run(PruebaApplication.class, args);
 		/*CarService servicio=context.getBean(CarService.class);

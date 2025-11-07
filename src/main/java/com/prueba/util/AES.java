@@ -30,14 +30,26 @@ public class AES {
 
 
     public static String encryptAES(String text) throws Exception {
-        String key = "92AE31A79FEEB2A3"; //llave
-        String iv = "0123456789ABCDEF"; // vector de inicialización
+        //String key = "92AE31A79FEEB2A3"; //llave
+        //String iv = "0123456789ABCDEF"; // vector de inicialización*/
+        //PARA APIGEE
+        /*String key = "oPDomhSy6nycDWS1AO5zhrcRSlf2WSEV"; //llave
+        String iv = "cGmtg3KWsIgeldgz"; // vector de inicialización*/
+        //Ambiente desarrollo y test
+        /*String key = "Callmeback3-CelulaGoldenMadmoney"; //llave
+        String iv = "NX3@9YP(B;CNRU8="; // vector de inicialización*/
+        String key = "GNzUxISGeivgI31KxV3/NRhwEJdbLHWl"; //llave
+        String iv = "UDF0d2xrWWgyek1V"; // vector de inicialización*/
         return encrypt(key, iv, text);
     }
 
     public static String decryptAES(String text) throws Exception {
-        String key = "92AE31A79FEEB2A3"; //llave
-        String iv = "0123456789ABCDEF"; // vector de inicialización
+        //Ambiente  desarrollo  y test
+        /*String key = "Callmeback3-CelulaGoldenMadmoney"; //llave
+        String iv = "NX3@9YP(B;CNRU8="; // vector de inicialización*/
+        //Ambiente prod
+        String key = "GNzUxISGeivgI31KxV3/NRhwEJdbLHWl"; //llave
+        String iv = "UDF0d2xrWWgyek1V"; // vector de inicialización
         String message=text;
         //String message="qVfJJNdxKA5GGxSzBFuUhA0FMlUlKKXJu2NAHmNqQ1CbEIhTIT5rrbg8zn5mdrkvrfGDC8Nj/420J5GN17UHUQy0b2luTtrK4m3ZZ+RjxGxMRKXD5CxYGq3EIQkoNWt8PPJyzXJ0GJjV6prezTsKLZwg2atToxSL4WYxCXB32lhlo19jFuQHYq7D7z3PXh/DAg8n/xAxVaHxSrv0XirPiinPwsP7uI8E4w73mq118ZgkTCpe5pUzMyDpnIp1z3V1mo6XlYUyERwKENS1brXdmj+gYkZJOC2HvsTzIvL5d/mZtL4bvP/7HpP+40i41hrc1APceIGU+i2bpJo7MtzqA==";
         System.out.println("cadena  ->:"+message);

@@ -29,6 +29,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public EmployeeResponse create(EmployeeRequest employeeRequest) {
+        log.error("ERROR 2");
         if (employeeRepository.findByIdentification(employeeRequest.getIdentification()).isPresent())
             log.error("El empleado ya existe");
         else {
@@ -53,6 +54,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
+
     public Mono<EmployeeResponse> createWebFlux(EmployeeRequest employeeRequest) {
         return apiWebClient.webClient()
                 .post()
@@ -78,6 +80,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public EmployeeResponse findByParam(String identification) {
 
+        log.error("ERROR 3");
         var employee = apiWebClient.webClient()
                 .get()
                 .uri("/employee/findByParam?identification="+identification)
